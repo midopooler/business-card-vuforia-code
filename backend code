@@ -1,0 +1,72 @@
+using UnityEngine;
+using Vuforia;
+using System.Collections;
+using System.Collections.Generic;
+
+public class NewBehaviourScript : MonoBehaviour, IVirtualButtonEventHandler
+{
+    public GameObject whatsapp;
+    public GameObject snapchat;
+    public GameObject instagram;
+    public GameObject gmail;
+    public GameObject facebook;
+    void Start()
+    {
+        whatsapp = GameObject.Find("whatsapp");
+        whatsapp.GetComponent<VirtualButtonBehaviour>().RegisterEventHandler(this);
+      
+        snapchat = GameObject.Find("snapchat");
+        snapchat.GetComponent<VirtualButtonBehaviour>().RegisterEventHandler(this);
+
+        instagram = GameObject.Find("instagram");
+        instagram.GetComponent<VirtualButtonBehaviour>().RegisterEventHandler(this);
+
+        facebook = GameObject.Find("facebook");
+        facebook.GetComponent<VirtualButtonBehaviour>().RegisterEventHandler(this);
+
+        gmail = GameObject.Find("Gmail");
+        gmail.GetComponent<VirtualButtonBehaviour>().RegisterEventHandler(this);
+    }
+
+    public void OnButtonPressed(VirtualButtonBehaviour vb)
+    {
+        Debug.Log("pressed........");
+
+        if (vb.VirtualButtonName == "whatsapp")
+        {
+            Application.OpenURL("https://wa.me/enternumberhere");
+            Debug.Log("whatsapp trigerred");
+        }
+        else if (vb.VirtualButtonName == "snapchat")
+        {
+            Application.OpenURL("https://www.snapchat.com");
+            Debug.Log("snapchat trigerred");
+        }
+        else if (vb.VirtualButtonName == "instagram")
+        {
+            Application.OpenURL("https://www.instagram.com");
+            Debug.Log("insta trigerred");
+        }
+        else if (vb.VirtualButtonName == "gmail")
+        {
+            Application.OpenURL("https://www.gmail.com");
+            Debug.Log("gmail trigerred");
+        }
+        else if (vb.VirtualButtonName == "facebook")
+        {
+            Application.OpenURL("https://www.facebook.com");
+            Debug.Log("facebook trigerred");
+
+        }
+    }
+
+    public void OnButtonReleased(VirtualButtonBehaviour vb)
+    {
+
+    }
+    void Update()
+    {
+
+    }
+
+}
